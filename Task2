@@ -1,0 +1,62 @@
+package Automation_Task4;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+public class sql {
+
+        public static void main(String[] args) {
+            try {
+                // Load the JDBC driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                // Establish the connection
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee_db", "empname", "Test@123");
+
+                // Prepare the SQL statement
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (empcode, name, age, salary) VALUES (?, ?, ?, ?)");
+
+                // Set the values
+                stmt.setInt(1, 101);
+                stmt.setString(2, "Jenny");
+                stmt.setInt(3, 25);
+                stmt.setInt(4, 10000);
+                stmt.executeUpdate();
+
+                stmt.setInt(1, 102);
+                stmt.setString(2, "Jacky");
+                stmt.setInt(3, 30);
+                stmt.setInt(4, 20000);
+                stmt.executeUpdate();
+
+                stmt.setInt(1, 103);
+                stmt.setString(2, "Joe");
+                stmt.setInt(3, 20);
+                stmt.setInt(4, 40000);
+                stmt.executeUpdate();
+
+                stmt.setInt(1, 104);
+                stmt.setString(2, "John");
+                stmt.setInt(3, 40);
+                stmt.setInt(4, 80000);
+                stmt.executeUpdate();
+
+                stmt.setInt(1, 105);
+                stmt.setString(2, "Shameer");
+                stmt.setInt(3, 25);
+                stmt.setInt(4, 90000);
+                stmt.executeUpdate();
+
+                System.out.println("Data inserted successfully.");
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
